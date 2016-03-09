@@ -1,0 +1,3 @@
+找到wamp-》apps-》phpmyadmin2.xx.x-》config.inc.php
+
+打开后找到mysql的默认密码输入位置，输入密码即可

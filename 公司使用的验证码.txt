@@ -1,0 +1,15 @@
+<img id="imagesecode" src="/coupon/session" /><em class="text6" style="cursor:pointer" onClick="DoFresh();return false;">看不清</em>
+
+//验证码
+  	$items['coupon/session'] = array(
+  	'title' => 'session',
+  	'page callback' => 'coupon_session',
+  	'access callback' => true,
+  	'type' => MENU_CALLBACK,
+  	'file' => 'coupon_fabiao.inc'
+  	);
+
+function DoFresh(){
+	var t=new Date();
+	$("#imagesecode").attr("src", "/coupon/session?number="+t.getTime());
+}

@@ -1,0 +1,3 @@
+PHP htmlspecialchars() º¯Êý
+
+Ïê¼û http://www.w3school.com.cn/php/func_string_htmlspecialchars.asp

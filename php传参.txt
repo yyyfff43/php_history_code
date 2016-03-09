@@ -1,0 +1,10 @@
+<form id="form1" name="form1" method="post" action="test1.php">
+<input name="name" type="text" size="18" maxlength="5" height="20" />
+<input type="submit" name="Submit" value="提交" />
+<input type="reset" name="Submit2" value="重置" />
+<input type="hidden" name=send1 value="send"> 
+
+
+接收：
+$name=$_POST['name'];
+echo $name;

@@ -1,0 +1,61 @@
+smarty 中foreach中iteration变量值就是当前循环次数
+例子：
+<code>
+{foreach key=key item=item from=$contact name=name}
+{$key}: {$item}:{$smarty.foreach.name.iteration}<br>
+{/foreach>
+</code>
+
+注意：得加上：name=name   {$smarty.foreach.name.iteration}  依次循环会显示：1，2，3，4...
+详细的例子如下：
+HTML:
+
+
+<html>
+<head>
+  <title><{$title}></title>
+</head>
+
+<body>
+
+<{$content}>
+<{foreach from=$array item=foreach name=name}>
+<{$foreach.newsID}><br>
+<{$foreach.newsTitle}>
+<h1>
+<{$smarty.foreach.name.iteration}></h1><br>
+
+<{/foreach}>
+
+</body>
+
+</html>
+
+PHP:
+
+
+<?php
+require "main.php";
+$tpl->template_dir = "./aaa";
+$array[] = array("newsID"=>1, "newsTitle"=>"第1条新闻");
+$array[] = array("newsID"=>2, "newsTitle"=>"第2条新闻");
+$array[] = array("newsID"=>3, "newsTitle"=>"第3条新闻");
+$array[] = array("newsID"=>4, "newsTitle"=>"第4条新闻");
+$array[] = array("newsID"=>5, "newsTitle"=>"第5条新闻");
+$array[] = array("newsID"=>6, "newsTitle"=>"第6条新闻");
+$tpl -> assign("array",$array);
+$tpl -> assign("title","测试标题");
+$tpl -> assign("content","Hello,World");
+$tpl -> display("test.htm");
+?>
+
+main.php
+
+
+<?php
+include   "../drivers/smarty/Smarty.class.php";
+$tpl= new Smarty();
+$tpl->left_delimiter = "<{";
+$tpl->right_delimiter = "}>";
+
+?>

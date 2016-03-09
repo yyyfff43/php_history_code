@@ -1,0 +1,266 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312">
+<title>php参数传递(PHP表单数据接收) - 邛崃热线 </title>
+<meta name="keywords" content="数据 接收 参数 传递 name 问题 变量 _GET input PHP">
+<meta name="description" content="问个问题:关于PHP里面的参数传输问题: 在mainc.php中用到表单: form id=form1 name=form1 method=post action=form4.php 其中定义了: input name=name type=text size=18 maxlength=5 height=20 / input type=submit name=Submit value=提交 / input type=reset name=S">
+<link href="php%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0_files/dede.css" rel="stylesheet" type="text/css">
+<link href="php%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0_files/article.css" rel="stylesheet" type="text/css">
+
+<!-- Digg 参数 -->
+<script language="javascript" src="php%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0_files/dedeajax2.js"></script>
+<script language="javascript">
+function Digg(divId,aid){
+   var taget_obj = document.getElementById(divId+''+aid);
+   var myajax = new DedeAjax(taget_obj,false,false,"","","");
+   myajax.SendGet2("/digg.php?action=digg&aid="+aid);
+   DedeXHTTP = null;
+}
+</script>
+<style>
+.context{	width:638px; clear:both;}
+.diggArea{ padding:0px;margin:0px;background-image:url('/plus/img/diggbg2.gif');width:60px; height:58px;line-height:23px;float:left; }
+.diggNum{ margin:0px; text-align:center; padding:0px;  font-size:12px; font-weight:bold; color:#CC0000;width:58px; height:23px; margin-top:8px; }
+.diggLink{ margin:0px; text-align:center; padding:0px;  font-size:14px; font-weight:bold;width:58px;  height:23px;  }
+.diggLink a{ font-size:14px; font-weight:bold; }
+</style>
+
+</head><body>
+<!--头部开始-->
+<div class="top cbody">
+	<div class="toplogo"><a href="http://www.611530.com/"><img src="php%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0_files/toplogo.gif" alt="邛崃热线"></a></div>
+  <div class="topbanner"><script language="javascript" type="text/javascript" src="php%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0_files/top.htm"></script></div>
+	<div class="toplink">
+		<ul>
+			<li><a href="http://www.611530.com/plus/heightsearch.php">高级搜索</a></li>
+			<li><a href="#" onclick="javascript:window.external.AddFavorite('http://www.611530.com','邛崃热线');">收藏本站</a></li>
+			<li><a href="http://www.611530.com/plus/sitemap.html">网站地图</a> </li>
+		  	<li><a href="http://www.611530.com/plus/rssmap.html">RSS订阅</a></li>
+		</ul>
+	</div>
+</div>
+<!--导航栏-->
+<div class="topmenu cbody">
+	<ul>
+		<li><a href="http://www.611530.com/">首页</a></li>
+        
+        <li><a href="http://www.611530.com/news/">邛崃新闻</a> </li>
+        
+        <li><a href="http://www.611530.com/house/">邛崃房产</a> </li>
+        
+        <li><a href="http://www.611530.com/xinxi/">信息中心</a> </li>
+        
+        <li><a href="http://www.611530.com/plus/list.php?tid=46">商家大全</a> </li>
+        
+        <li><a href="http://www.611530.com/bm/">便民信息</a> </li>
+        
+        <li><a href="http://www.611530.com/tu/">邛崃图片</a> </li>
+        
+        <li><a href="http://www.611530.com/tour/">邛崃旅游</a> </li>
+        
+        <li><a href="http://www.611530.com/PC/">电脑网络</a> </li>
+        
+        <li><a href="http://www.611530.com/down/">资源下载</a> </li>
+        
+        <li><a href="http://www.611530.com/plus/list.php?tid=89">分类信息</a> </li>
+        
+		<li><a href="http://www.611530.com/special/index.php">专题</a></li>
+	</ul>
+	<div class="rssbut">
+		<a href="http://www.611530.com/plus/rssmap.html"><img src="php%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0_files/rss_button.gif" alt="RSS"></a>
+    </div>
+</div>
+<!--搜索条-->
+<div class="topsearch cbody">
+	<div class="title"></div>
+	<div class="inpbox">
+    <form action="/plus/search.php" name="formsearch">
+		<input name="kwtype" value="1" type="hidden">
+		<input name="keyword" id="keyword" class="searchtxt" type="text">
+		<select name="searchtype" id="searchtype">
+			<option value="titlekeyword" selected="selected">智能模糊搜索</option>
+			<option value="title">仅搜索标题</option>
+		</select>
+		<input src="php%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0_files/topsearch_submit.gif" type="image">
+    </form>
+	</div>
+	<div class="hots">
+		<strong>热门关键字：</strong>
+		　<a href="http://www.611530.com/plus/search.php?keyword=%DA%F6%E1%C1&amp;searchtype=titlekeyword">邛崃</a> 　<a href="http://www.611530.com/plus/search.php?keyword=%B5%E7%BB%B0&amp;searchtype=titlekeyword">电话</a> 　<a href="http://www.611530.com/plus/search.php?keyword=%CC%EC%CC%A8%C9%BD&amp;searchtype=titlekeyword">天台山</a> 　<a href="http://www.611530.com/plus/search.php?keyword=windows&amp;searchtype=titlekeyword">windows</a> 　<a href="http://www.611530.com/plus/search.php?keyword=vista&amp;searchtype=titlekeyword">vista</a> 
+	</div>
+</div>
+<!--内容-->
+<div class="main cbody margintop">
+	<!--左侧-->
+	<div class="pleft">
+		<!--位置导航-->
+		<div class="thisplace">
+			<div class="placenav">
+				<span>当前位置 :</span>| 
+				<a href="http://www.611530.com/">主页</a>&gt;<a href="http://www.611530.com/PC/">电脑网络</a>&gt;<a href="http://www.611530.com/PC/wangzhan/">网站建设</a>&gt;
+			</div>
+		</div>
+		<!--资讯内容-->
+		<div class="newsview">
+			<!--资讯标题-->
+			<div class="title">
+				<h1>php参数传递(PHP表单数据接收)</h1>
+			</div>
+			<!--相关信息-->
+			<div class="info">
+				<strong>来源：</strong>
+				<strong>作者：</strong>
+				<strong>时间：</strong>2007-10-25
+                <strong>Tag：</strong>
+				<strong>点击：</strong> 
+			    <script src="php%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0_files/count.htm" language="javascript"></script>1677
+			</div>
+	    <!--资讯正文-->
+			<div class="content">
+            <div class="f14 wr"><cd></cd>问个问题:关于PHP里面的参数传输问题: <br>在mainc.php中用到表单: <br>&lt;form id="form1" name="form1" method="post" action="form4.php"&gt; <br>其中定义了: <br>&lt;input name="name" type="text" size="18" maxlength="5" height="20" /&gt; <br>&lt;input type="submit" name="Submit" value="提交" /&gt; <br>&lt;input type="reset" name="Submit2" value="重置" /&gt; <br>&lt;input type="hidden" name=send1 value="send"&gt; <br>但是在form4.php中,想要 <br>&lt;? if($send1=="send") <br>{ echo("您的基本信息如下:"); <br>print("姓名:" .$name.);}?&gt; <br>却不能很好地将name参数传递过来呢?究竟要怎么做才能传过来咧? <br>若能在一天之内回答好.追加13分.</div>
+<div class="f14 wr"><strong>问题补充：</strong>就像第一个回答者,的确是解决了问题,但是我在看书的时候,并没有见过需要加那么多的GET的呀?是书的问题,还是PHP配置上有问题,还是怎么回事呢?我把mainc.php和form4.php放在同一文件夹里<br><br>PHP4.1（好像）以后取消了直接接收变量，而用 $_GET['变量名'] 接收从链接传递过来的变量， 用 $_POST['变量名'] 接收从表单提交来的变量。同样有$_FILES[],$_SERVER[]等，你看的书介绍的是以前版本的php吧。 <br>建议适应新的写法，或者: <br>把php.ini文件中，register_globals设为on。(不建议)<br><br><a name="86091498">php4中网页间传递参数 <br>在接收参数的网页中一定要用$_GET接受 <br>在form4.php中，$name=$_GET['name']; <br>然后就可以随心所欲的运用$name变量喽</a><br><br><a name="85930787">if($_GET['send1']=="send") <br><br>print("姓名:" .$_GET['name'].);}?&gt; <br>这样吧。。。改这两个地方。 <br>-------------------- <br>即然你问了我就再说一下，不是书的问题，而是PHP版本问题，PHP以前是那样用，不过后来就需要这个变量了，你以后看书最好找PHP5的书看。</a></div><br>
+			
+            </div>
+            <div class="cupage">
+				
+             </div>
+			<!--操作-->
+			<div class="actbar">
+				<span>[<a href="http://www.611530.com/plus/stow.php?arcID=286">收藏</a>]</span>
+				<span>[<a href="http://www.611530.com/plus/recommend.php?arcID=286">推荐</a>]</span>
+				<span>[<a href="http://www.611530.com/plus/feedback.php?arcID=286">评论</a>]</span>
+				<span>[<a href="#" onclick="window.print();">打印</a>]</span>
+				<span>[<a href="#" onclick="window.close();">关闭</a>]</span>
+			</div>
+            <!--上下文-->
+
+
+            <div class="context">
+                <div id="digg286" class="diggArea">
+                <div class="diggNum">1</div>
+                <div class="diggLink"><a href="javascript:Digg('digg',286);">顶一下</a></div>
+                </div>
+
+                 <div style="float: left; margin-left: 20px;">
+                    上一篇：<a href="http://www.611530.com/PC/wangzhan/200710/279.html">合租空间和虚拟主机有什么区别？为什么合租空间容量大，速度快，反而更便宜？</a> 
+                    <br>
+                    下一篇：<a href="http://www.611530.com/PC/wangzhan/200712/791.html">robots.txt的作用与写法</a> 
+                </div>
+
+           </div>
+
+
+            <div class="floatclear"><!--清除浮动--></div>
+
+		</div>
+		<!--评论-->
+		<div class="comment">
+			<!--评论:标题-->
+			<div class="commenttitle">
+				<div class="title"><strong>最新评论</strong>共有 0 位网友发表了评论 </div>
+				<div class="gotopost"><a href="http://www.611530.com/plus/feedback.php?arcID=286">查看所有评论</a></div>
+			</div>
+			<!--评论内容-->
+			<div class="commentbox">
+				<script src="php%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0_files/feedback_js.htm"></script>
+			</div>
+			<!--发表评论:标题-->
+			<div class="posttitle"><strong>发表评论</strong></div>
+			<!--发表评论-->
+            <form action="/plus/feedback.php?action=send" method="post" name="feedback">
+			<input name="arcID" value="286" type="hidden">
+			<div class="postbox">
+				<div class="txtbox">
+					<strong>评论内容：</strong>不能超过250字，需审核，请自觉遵守互联网相关政策法规。
+					<textarea name="msg" cols="60" rows="6"></textarea>
+				</div>
+				<div class="userbox">
+					<dl>
+						<dd>
+							<strong>用户名：</strong><input name="username" class="username" maxlength="20" type="text">
+							<strong>密码：</strong><input name="pwd" class="password" maxlength="20" type="password">
+						</dd>
+						<dd></dd>
+						<dd class="mtop"><input name="notuser" value="1" type="checkbox"> <strong>匿名?</strong></dd>
+						<dd><input name="sb" class="submit" value="发表评论" onclick='javascript:if(document.feedback.msg.value!="") document.feedback.submit(); else alert("评论内容不能为空！");' type="button">
+					  </dd>
+						<dd class="mtop"><a href="http://www.611530.com/member/index_do.php?fmdo=user&amp;dopost=regnew" target="_blank">注册</a></dd>
+					</dl>
+			</div>
+			</div></form>
+		</div>
+
+	</div>
+
+	<!--右侧-->
+	<div class="pright">
+		<!--侧边信息列表-->
+                <div class="classbox">
+			<dl>
+				<dt>栏目列表</dt>
+				<dd>
+					<ul>
+                    
+                    <li><a href="http://www.611530.com/PC/office/">办公技巧</a></li>
+                    
+                    <li><a href="http://www.611530.com/PC/sys/">操作系统</a></li>
+                    
+                    <li><a href="http://www.611530.com/PC/wenti/">电脑故障</a></li>
+                    
+                    <li><a href="http://www.611530.com/PC/zhuzhuang/">电脑组装</a></li>
+                    
+                    <li><a href="http://www.611530.com/PC/wangzhan/">网站建设</a></li>
+                    
+                    <li><a href="http://www.611530.com/PC/yj/">硬件设备</a></li>
+                    
+					</ul>
+				</dd>
+			</dl>
+	  </div>
+  <div class="rlist margintop">
+			<div class="title">热点关注</div>
+			<div class="rbox">
+				<ul>
+                	<li><a href="http://www.611530.com/PC/wangzhan/200710/225.html">Vista安装最新的Apache+PH</a></li><li><a href="http://www.611530.com/PC/wangzhan/200710/286.html">php参数传递(PHP表单数据</a></li><li><a href="http://www.611530.com/PC/wangzhan/200709/167.html">网站被挂木马病毒了，怎么</a></li><li><a href="http://www.611530.com/PC/wangzhan/200708/23.html">Windows Vista下IIS7安装</a></li><li><a href="http://www.611530.com/PC/wangzhan/200708/22.html">Windows vista IIS7.0+PHP</a></li><li><a href="http://www.611530.com/PC/wangzhan/200712/891.html">网站赢利方式种种</a></li><li><a href="http://www.611530.com/PC/wangzhan/200710/277.html">合租服务器跟虚拟主机的区</a></li><li><a href="http://www.611530.com/PC/wangzhan/200710/279.html">合租空间和虚拟主机有什么</a></li><li><a href="http://www.611530.com/PC/wangzhan/200710/278.html">合租空间和虚拟主机的比较</a></li><li><a href="http://www.611530.com/PC/wangzhan/200712/791.html">robots.txt的作用与写法</a></li><li><a href="http://www.611530.com/PC/wangzhan/200708/133.html"> 网站排名下降的主要原因</a></li><li><a href="http://www.611530.com/PC/wangzhan/200804/1199.html">解决WinXP中IIS禁止访问连</a></li><li><a href="http://www.611530.com/PC/wangzhan/200804/1273.html">ASP时间函数详解 ,asp时间</a></li><li><a href="http://www.611530.com/PC/wangzhan/200805/1304.html">网站优化的10个要点</a></li><li><a href="http://www.611530.com/PC/wangzhan/200806/1371.html">VISTA下 IIS 7.0 + PHP 4 </a></li><li><a href="http://www.611530.com/PC/wangzhan/200806/1409.html">SEO工作认识</a></li><li><a href="http://www.611530.com/PC/wangzhan/200806/1434.html">SEO重点是建设独特网站内</a></li><li><a href="http://www.611530.com/PC/wangzhan/200806/1382.html">浅谈：阿里巴巴及互联网的</a></li><li><a href="http://www.611530.com/PC/wangzhan/200806/1435.html">利用好网页的Description</a></li><li><a href="http://www.611530.com/PC/wangzhan/200806/1432.html">SEO站内内容与内部链接的</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!--侧边信息列表-->
+		<div class="rlist margintop">
+			<div class="title">相关文章</div>
+			<div class="rbox">
+				<ul>
+                	<li><a href="http://www.611530.com/PC/wangzhan/200806/1435.html">利用好网页的Description</a></li><li><a href="http://www.611530.com/PC/wangzhan/200806/1434.html">SEO重点是建设独特网站内</a></li><li><a href="http://www.611530.com/PC/wangzhan/200806/1433.html">SEO，网站内容的相关性</a></li><li><a href="http://www.611530.com/PC/wangzhan/200806/1432.html">SEO站内内容与内部链接的</a></li><li><a href="http://www.611530.com/PC/wangzhan/200806/1409.html">SEO工作认识</a></li><li><a href="http://www.611530.com/PC/wangzhan/200806/1382.html">浅谈：阿里巴巴及互联网的</a></li><li><a href="http://www.611530.com/PC/wangzhan/200806/1371.html">VISTA下 IIS 7.0 + PHP 4 </a></li><li><a href="http://www.611530.com/PC/wangzhan/200805/1304.html">网站优化的10个要点</a></li><li><a href="http://www.611530.com/PC/wangzhan/200804/1273.html">ASP时间函数详解 ,asp时间</a></li><li><a href="http://www.611530.com/PC/wangzhan/200804/1199.html">解决WinXP中IIS禁止访问连</a></li>
+                </ul>
+		  </div>
+		</div>
+
+	</div>
+	<div class="floatclear"><!--清除浮动--></div>
+</div>
+
+<!--foot-->
+<table class="tbspan" align="center" border="0" cellpadding="0" cellspacing="0" width="900">
+  <tbody><tr>
+    <td align="center" height="6"><table style="margin-top: 3px; margin-bottom: 6px;" align="center" background="php%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0_files/index_10.gif" border="0" cellpadding="0" cellspacing="0" width="900" height="108">
+  <tbody><tr>
+    <td align="center" height="24">　 <a href="http://www.611530.com/biz/about/369.html" target="_blank">关于热线网</a> ┊ <a href="http://www.611530.com/plus/sitemap.html" target="_blank">网站导航</a> ┊ <a href="http://www.611530.com/biz/about/370.html" target="_blank">广告服务</a> ┊ <a href="http://www.611530.com/biz/about/371.html" target="_blank">隐私保护</a> ┊ <a href="http://www.611530.com/biz/about/372.html" target="_blank">招贤纳士</a> ┊ <a href="http://www.611530.com/biz/about/373.html" target="_blank">合作伙伴</a> ┊ <a href="http://www.611530.com/plus/guestbook/" target="_blank">留言/投诉</a> ┊ <a href="http://www.611530.com/biz/about/374.html" target="_blank">联系方式</a> ┊ <a href="http://www.611530.com/bbs" target="_blank">关注我们</a> ┊ <a href="javascript:window.external.addFavorite('/','%E9%82%9B%E5%B4%83%E7%83%AD%E7%BA%BF%E7%BD%91%20%E9%82%9B%E5%B4%83%E5%9C%B0%E5%8C%BA%E7%9A%84%E9%97%A8%E6%88%B7%E7%BD%91%E7%AB%99')">加入收藏</a></td>
+  </tr>
+  <tr>
+    <td align="center" valign="middle" height="30"><a title="邛崃热线信息中心" href="" target="_blank">邛崃热线信息中心</a> <a class="list" href="" target="_blank">版权所有</a><a href="http://net.china.cn/chinese/index.htm" target="_blank"><img src="php%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0_files/netchina.gif" alt="不良信息举报中心" align="absmiddle" border="0" width="19" height="19" hspace="5"></a> 地址：四川省邛崃市小南街49号 <span class="eng3"> QQ热线群:<font color="#0000ff"><strong>2281625</strong></font></span> <font color="#ff0000">客服热线：</font>13981708384</td>
+  </tr>
+  <tr>
+    <td align="center" height="30">网络实名：<a href="http://www.611530.com/">邛崃热线</a> 域名：<a href="http://www.611530.com/">www.611530.com</a> <a href="">www.qlrxw.com</a> <span class="eng" style="color: rgb(204, 51, 0);">611530</span><span class="eng">.Com</span>&#8482;　<a href="http://www.miibeian.gov.cn/">蜀ICP备05028176号</a>
+        <script language="JavaScript" type="text/javascript" src="php%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0_files/344016.js"></script><a href="http://www.51.la/?00344016" target="_blank"><img alt="51.la 专业、免费、强健的访问统计" src="php%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0_files/icon_9.gif" style="border: medium none ;"></a>
+<img style="width: 0px; height: 0px;" src="php%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0_files/go.htm"></td>
+  </tr>
+</tbody></table>
+ </td>
+  </tr>
+</tbody></table>
+<!--foot END-->
+
+</body></html>

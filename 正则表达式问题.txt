@@ -1,0 +1,9 @@
+在网上有事粘贴到的正则表达式总是不能用，报warning: preg_match() [function.preg-match]: No ending delimiter '^' found in xxxxxx
+
+
+例：if (!preg_match("^[0-9]*$", $str))
+
+
+解决办法是加一对 /
+
+正确的是：if (!preg_match("/^[0-9]*$/", $str))

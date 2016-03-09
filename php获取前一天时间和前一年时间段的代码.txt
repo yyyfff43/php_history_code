@@ -1,0 +1,11 @@
+//当前前一天
+echo $yestoday = date("Y-m-d",strtotime ("-1 day"));
+
+//前一年(即从昨天到去年的昨天)
+//例昨天是8月7日
+echo date('Y-m-d',strtotime('-1 month -1 day'));
+//去年的8月7日
+echo date('Y-m-d',strtotime('-13 month -1 day'));
+
+
+

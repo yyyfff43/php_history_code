@@ -1,0 +1,6 @@
+//√ΩÃÂ’À∫≈
+$data['login_name'] 	= !empty($_GET['login_name']) ? trim($_GET['login_name']) : '';
+//’À∫≈√‹¬Î
+$data['login_password'] = !empty($_GET['login_password']) ? trim($_GET['login_password']) : '';
+//–’√˚
+$data['pr_name'] 		= !empty($_GET['pr_name']) ? trim($_GET['pr_name']) : '';

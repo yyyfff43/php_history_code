@@ -1,0 +1,11 @@
+
+$arr = array('aaa'=>'张三',
+             'bbb'=>'李四',
+             'ccc'=>'王五',
+             );
+
+foreach ($info_arr as $key=>$a){
+       echo '键名：'.$key.'<br>';
+
+       echo '值：'.$a.'<br>';
+}
