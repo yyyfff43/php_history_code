@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<note>
+   <to>George</to>
+   <from>John</from>
+   <heading>Reminder</heading>
+   <body>Don't forget the meeting!</body>
+   <info>
+             <time>2008-03-05 15:00:00</time>
+			 <address>localhost rooms</address>
+   </info>
+</note>

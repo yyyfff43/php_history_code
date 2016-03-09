@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> {$title} </TITLE>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ </HEAD>
+
+ <BODY>
+ 购书信息:<BR>
+  <b>{$content[0]}</b><BR>
+  图书名称:&nbsp;{$content.name}<BR>
+  图书单价:&nbsp;{$content.unit_price.price}/{$content.unit_price.unit}<BR><BR>
+
+
+  其他计算图书列表：<BR>
+  {foreach key=key item=item from=$other_books_list}
+             {$key}=>{$item.name}<BR>
+  {/foreach}
+  <BR>
+  {*section循环可以嵌套使用*}
+  {section name=sec1 loop=$pay_list}
+
+         <FONT COLOR="#3333FF">{$pay_list[sec1].way}</FONT>:&nbsp;&nbsp;
+		 {section name=sec2 loop=$pay_list[sec1].type}
+                    <FONT  COLOR="#FFCC66">{$pay_list[sec1].type[sec2]}</FONT>
+		 {/section}
+
+  {/section}
+ </BODY>
+</HTML>

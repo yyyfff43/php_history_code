@@ -1,0 +1,8 @@
+php的xml解析小例子
+
+包括使用expat，dom，simpleXML三个例子
+
+
+simpleXML 手册
+http://www.w3school.com.cn/php/php_ref_simplexml.asp
+

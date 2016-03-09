@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> 验证码测试 </TITLE>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+  <script type="text/javascript" src="/public/jquery.js"></script>
+  <SCRIPT LANGUAGE="JavaScript">
+<!--
+  
+//-->
+</SCRIPT>
+ </HEAD>
+
+ <BODY>
+<!-- 验证码 -->
+  <FORM METHOD=POST ACTION="success.php">
+    <TABLE>
+	<TR>
+		<TD>姓名:</TD>
+		<TD><INPUT TYPE="text" NAME="name" id="tname"></TD>
+	</TR>
+	<TR>
+		<TD>验证码：</TD>
+		<TD><INPUT TYPE="text" NAME="yzm" id="tyzm"></TD>
+		<TD><img id="yzmimg" src="vcode.php" align="absmiddle" /></TD>
+		<td><a href="">看不清，换一张</a></td>
+	</TR>
+	<TR>
+		<TD>&nbsp;</TD>
+		<TD><INPUT TYPE="submit" value="提交"></TD>
+	</TR>
+	</TABLE>
+	
+  </FORM>
+
+ </BODY>
+</HTML>

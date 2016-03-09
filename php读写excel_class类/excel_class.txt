@@ -1,0 +1,46 @@
+------------------------------------------
+Excel 类	V1.1
+				By Monkey
+------------------------------------------
+
+-----函数说明
+读取Excel文件
+function Read_Excel_File($ExcelFile,$Result)
+
+$ExcelFile	Excel文件名
+$Result		返回的结果
+函数返回值	正常返回0，否则返回错误信息
+
+返回的值数组 
+	$result[sheet名][行][列] 的值为相应Excel Cell的值
+	
+建立Excel文件	
+function Create_Excel_File($ExcelFile,$Data) 
+
+$ExcelFile	Excel文件名
+$Data		Excel表格数据
+请把函数写在PHP脚本的开头
+
+例1：
+<?
+require "excel_class.php";
+
+Read_Excel_File("Book1.xls",$return);
+
+for ($i=0;$i<count($return[Sheet1]);$i++)
+{
+	for ($j=0;$j<count($return[Sheet1][$i]);$j++)
+	{
+		echo $return[Sheet1][$i][$j]."|";
+	}
+	echo "<br>";
+}
+?>
+
+例2：
+<?
+require "excel_class.php";
+
+Read_Excel_File("Book1.xls",$return);
+Create_Excel_File("ddd.xls",$return[Sheet1]);
+?>
